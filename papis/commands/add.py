@@ -304,6 +304,11 @@ def run(paths: List[str],
 
     tmp_document = papis.document.Document(temp_dir)
 
+    # reference building
+    if data.get('ref') is None or True:
+        data['ref'] = papis.bibtex.create_reference(data)
+        logger.info("Created reference '%s'", data['ref'])
+
     if not folder_name:
         out_folder_name = get_hash_folder(data, in_documents_paths)
         logger.info("Got an automatic folder name")
@@ -360,11 +365,6 @@ def run(paths: List[str],
             shutil.copy(in_file_path, tmp_end_filepath)
 
     data['files'] = new_file_list
-
-    # reference building
-    if data.get('ref') is None:
-        data['ref'] = papis.bibtex.create_reference(data)
-        logger.info("Created reference '%s'", data['ref'])
 
     tmp_document.update(data)
     tmp_document.save()
