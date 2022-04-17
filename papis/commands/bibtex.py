@@ -529,4 +529,4 @@ def _import(ctx: click.Context, out: Optional[str], _all: bool) -> None:
         else:
             logger.info("\tfound %s file(s)", len(filepaths))
 
-        papis.commands.add.run(filepaths, data=doc)
+        papis.commands.add.run(filepaths, data=doc, folder_name=papis.config.getstring('add-folder-name'))
