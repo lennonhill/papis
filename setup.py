@@ -165,6 +165,7 @@ setup(
         'papis.format': [
             'python=papis.format:PythonFormater',
             'jinja2=papis.format:Jinja2Formater',
+            'custom=papis.format:CustomFormater',
         ],
         'papis.command': [
             "add=papis.commands.add:cli",
