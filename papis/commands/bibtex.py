@@ -519,7 +519,7 @@ def _import(ctx: click.Context, out: Optional[str], _all: bool) -> None:
                         "No pdf files will be imported"
                         "{c.Style.RESET_ALL}")
         else:
-            filepaths = [f for f in fileValue.split(":") if os.path.exists(f)]
+            filepaths = [f for f in fileValue.replace(';', ':').split(":") if os.path.exists(f)]
 
         if not filepaths and fileValue is not None:
             logger.info("\t"
